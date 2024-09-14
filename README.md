@@ -1,3 +1,12 @@
+
+Technology:
+ - Next.js: Web Framework
+ - React: UI Library
+ - Shadcn: Component Library
+ - TailwindCSS: CSS Framework
+ - Clerk: Authentication and User/Organization Management
+ - usehook-ts: React hooks in TS
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs"
 
 export const Navbar = () => {
+    console.log("Dashboard-Navbar-loaded")
     return (
         <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white flex items-center">
             {/* TODO: Mobile Sidebar */}
