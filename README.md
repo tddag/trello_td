@@ -6,6 +6,7 @@ Technology:
  - TailwindCSS: CSS Framework
  - Clerk: Authentication and User/Organization Management
  - usehook-ts: React hooks in TS
+ - zustand: state management library
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
