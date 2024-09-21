@@ -7,6 +7,8 @@ Technology:
  - Clerk: Authentication and User/Organization Management
  - usehook-ts: React hooks in TS
  - zustand: state management library
+ - mysql2: library/driver to connect to mysql db
+ - zod: TypeScript-first schema validation with static type inference
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
