@@ -4,9 +4,22 @@ import db from "@/lib/db";
 import { create } from "@/actions/create-board";
 import { Button } from "@/components/ui/button";
 
-const OrganizationIdPage = () => {
+const OrganizationIdPage = async () => {
 
     // const { userId, orgId } = auth();
+
+    const boards = await db.query(`SELECT * FROM board;`, (err: any, data: any) => {
+        if (err) {
+            console.log("Failed to get all boards");
+            console.log(err);
+        }
+        console.log("Get all boards successfully")
+        // console.log(data)
+        return data
+        
+    })
+
+    console.log(boards);
 
     return (
         <div>
