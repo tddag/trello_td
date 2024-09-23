@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import db from "@/lib/db";
 import { create } from "@/actions/create-board";
 import { Button } from "@/components/ui/button";
+import { Board } from "./board";
 
 const OrganizationIdPage = async () => {
 
@@ -33,9 +34,7 @@ const OrganizationIdPage = async () => {
 
             <div className="space-y-2">
                 {boards.map((board: any) => (
-                    <div key={board.id}>
-                        Board Title: {board.title}
-                    </div>
+                    <Board key={board.id} title={board.title} id={board.id}/>
                 ))}
             </div>
         </div>

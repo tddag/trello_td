@@ -1,5 +1,6 @@
 "use server";
 import db from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 import { z } from 'zod';
 
@@ -26,5 +27,7 @@ export async function create(formData: FormData) {
         }
         console.log("Create board successfully!");
     })
+
+    revalidatePath("/organization/org_2lzEBlBqmiTJHsMWN3c0XAETWrA");
     
 }
