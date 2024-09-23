@@ -15,8 +15,10 @@ export async function create(formData: FormData) {
         title: formData.get("title")
     })
 
+    const connection = await db;
+
     const q = `INSERT INTO board (title) VALUES (?)`
-    db.query(q, [title], (err: any, data: any) => {
+    await connection.query(q, [title], (err: any, data: any) => {
         if (err) {
             console.log("Failed to create board")
             console.log(err)

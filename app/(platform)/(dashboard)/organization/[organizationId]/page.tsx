@@ -8,21 +8,15 @@ const OrganizationIdPage = async () => {
 
     // const { userId, orgId } = auth();
 
-    const boards = await db.query(`SELECT * FROM board;`, (err: any, data: any) => {
-        if (err) {
-            console.log("Failed to get all boards");
-            console.log(err);
-        }
-        console.log("Get all boards successfully")
-        // console.log(data)
-        return data
-        
-    })
+    const connection = await db;
+
+    const [boards, fields] = await connection.query(`SELECT * FROM board;`);
 
     console.log(boards);
+    console.log(fields)
 
     return (
-        <div>
+        <div className="flex flex-col space-y-4">
             <form action={create}>
                 <input
                     id="title"
@@ -36,6 +30,14 @@ const OrganizationIdPage = async () => {
                     Submit
                 </Button>
             </form>
+
+            <div className="space-y-2">
+                {boards.map((board: any) => (
+                    <div key={board.id}>
+                        Board Title: {board.title}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
