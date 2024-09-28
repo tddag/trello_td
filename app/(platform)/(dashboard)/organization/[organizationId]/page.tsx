@@ -9,7 +9,7 @@ const OrganizationIdPage = async () => {
 
     // const { userId, orgId } = auth();
 
-    const connection = await db;
+    const connection = await db();
 
     const [boards, fields] = await connection.query(`SELECT * FROM board;`);
 
