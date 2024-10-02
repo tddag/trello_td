@@ -1,5 +1,5 @@
 
-Technology:
+Technologies:
  - Next.js: Web Framework
  - React: UI Library
  - Shadcn: Component Library
@@ -9,6 +9,7 @@ Technology:
  - zustand: state management library
  - mysql2: library/driver to connect to mysql db
  - zod: TypeScript-first schema validation with static type inference
+ - unsplash: stock photography
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
