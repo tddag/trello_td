@@ -10,16 +10,30 @@ import db from "@/lib/db";
  
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-    const { userId } = auth();
+    const { userId, orgId } = auth();
 
-    if (!userId) {
+    if (!userId || !orgId) {
         return {
             error: "Unauthorized",
         }
     }
     
 
-    const { title } = data;
+    const { title, image } = data;
+
+    const [
+        imageId,
+        imageThumbUrl,
+        imageFullUrl,
+        imageLinkHTML,
+        imageUserName
+    ] = image.split("|")
+
+    if (!imageId || !imageThumbUrl || !imageFullUrl || !imageUserName || !imageLinkHTML) {
+        return {
+            error: "Missing fields. Failed to create board."
+        }
+    }
 
     let board;
 
@@ -27,8 +41,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         const connection = await db();
 
 
-        let q = `INSERT INTO board (title) VALUES (?)`
-        await connection.query(q, [title])
+        let q = `INSERT INTO board (title, orgId, imageId, imageThumbUrl, imageFullUrl, imageUserName, imageLinkHTML) VALUES (?, ?, ?, ?, ?, ?, ?)`
+        await connection.query(q, [title, orgId, imageId, imageThumbUrl, imageFullUrl, imageUserName, imageLinkHTML])
 
         q = `SELECT * FROM board`;
         const [res] = await connection.query(q)    
@@ -36,6 +50,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         board = res[res.length - 1];
 
     } catch (e) {
+        console.log(e);
         return {
             error: "Failed to create."
         }
