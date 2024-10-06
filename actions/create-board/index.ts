@@ -10,6 +10,8 @@ import db from "@/lib/db";
  
 
 const handler = async (data: InputType): Promise<ReturnType> => {
+
+    console.log("start creating")
     const { userId, orgId } = auth();
 
     if (!userId || !orgId) {
