@@ -21,15 +21,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     const { title, id } = data;
 
-    try {
-         
-    } catch (e) {
-        console.log(e)
-        return {
-            error: "Failed to update."
-        }
-    }
-
     const connection = await db();
 
     let q = `UPDATE board SET title = ? WHERE id = ? AND orgId = ?`
