@@ -10,3 +10,4 @@ export type Board = {
     createdAt: string
     updatedAt: string
 }
+
