@@ -15,6 +15,7 @@ const BoardIdPage = async ({
     params
 }: BoardIdPageProps) => {
 
+
     const { orgId } = auth();
 
     if (!orgId) {
@@ -23,13 +24,13 @@ const BoardIdPage = async ({
 
     const dbConnection = await db();
 
-    let q = `SELECT * FROM list WHERE boardId = ? ORDER BY 'order'`
+    let q: string = `SELECT * FROM list WHERE boardId = ? ORDER BY 'order' ASC`
 
     let lists: List[];
     [lists] = await dbConnection.query(q, [params.boardId]);
 
     for (let list of lists) {
-        q = `SELECT * FROM card WHERE listId = ? ORDER BY 'order'`
+        q = `SELECT * FROM card WHERE listId = ? ORDER BY 'order' ASC`
         let [resultCards] = await dbConnection.query(q, [list.id])
 
         if (list.cards) {

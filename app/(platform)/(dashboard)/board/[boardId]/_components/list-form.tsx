@@ -58,6 +58,7 @@ export const ListForm = () => {
             title, 
             boardId
         })
+
     }
 
     useEventListener("keydown", onKeyDown)
@@ -82,6 +83,7 @@ export const ListForm = () => {
                     <input
                         hidden
                         value={params.boardId}
+                        onChange={() => {}}
                         name="boardId"
                     />
 

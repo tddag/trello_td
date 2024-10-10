@@ -53,6 +53,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     // console.log(boards[0]);
 
+    console.log("path is: ")
+    console.log(`/board/${boardId}`)
+
     revalidatePath(`/board/${boardId}`)
 
     return {
