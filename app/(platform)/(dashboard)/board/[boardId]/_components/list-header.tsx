@@ -7,6 +7,7 @@ import List from "@/types/List";
 import { ElementRef, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useEventListener } from "usehooks-ts";
+import { ListOptions } from "./list-options";
 
 interface ListHeaderProps {
     data: List
@@ -101,6 +102,11 @@ export const ListHeader = ({
                     {title}
                 </div>
             )}
+
+            <ListOptions
+                onAddCard={() => {}}
+                data={data}
+            />
 
         </div>
     )

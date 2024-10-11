@@ -3,7 +3,7 @@
 import Card from "@/types/Card";
 import List from "@/types/List";
 import { ListForm } from "./list-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ListItem } from "./list-item";
 
 interface ListContainerProps {
@@ -16,7 +16,14 @@ export const ListContainer = ({
     data,
 }: ListContainerProps) => {
 
+
+    console.log("List Container rendered")
+    console.log(data)
     const [orderedData, setOrderedData] = useState(data);
+
+    useEffect(() => {
+        setOrderedData(data)
+    }, [data])
 
     return (
         <ol className="flex gap-x-3 h-full">
