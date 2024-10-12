@@ -10,10 +10,12 @@ import { useEventListener } from "usehooks-ts";
 import { ListOptions } from "./list-options";
 
 interface ListHeaderProps {
+    onAddCard: () => void,
     data: List
 }
 
 export const ListHeader = ({
+    onAddCard,
     data
 }: ListHeaderProps) => {
 
@@ -104,7 +106,7 @@ export const ListHeader = ({
             )}
 
             <ListOptions
-                onAddCard={() => {}}
+                onAddCard={onAddCard}
                 data={data}
             />
 
