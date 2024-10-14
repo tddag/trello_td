@@ -1,7 +1,7 @@
 import Card from "./Card";
 
 type List = {
-    id: number,
+    id: string,
     title: string,
     order: number,
     boardId: number,

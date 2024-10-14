@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
 
 interface CardFormProps {
-    listId: number;
+    listId: string;
     enableEditing: () => void;
     disableEditing: () => void;
     isEditing: boolean;

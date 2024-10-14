@@ -1,5 +1,5 @@
 type Card = {
-    id: number,
+    id: string,
     title: string,
     description: string,
     order: number,

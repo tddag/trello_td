@@ -11,6 +11,7 @@ Technologies:
 - zod: TypeScript-first schema validation with static type inference
 - unsplash: stock photography
 - lodash: A JavaScript utility library delivering consistency, modularity, performance, & extras.
+- hello-pangea/dnd: drag and drop for lists with React
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
