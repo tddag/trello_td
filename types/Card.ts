@@ -1,11 +1,11 @@
 type Card = {
-    id: string,
+    id: string | number,
     title: string,
-    description: string,
+    description: string | null,
     order: number,
-    listId: number,
-    createdAt: string,
-    updatedAt: string
+    listId: string | number,
+    createdAt: Date,
+    updatedAt: Date
 }
 
 export default Card;

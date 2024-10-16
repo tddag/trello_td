@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 import { ListItem } from "./list-item";
 
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
+import { useAction } from "@/hooks/use-action";
+import { updateListOrder } from "@/actions/update-list-order";
+import { toast } from "sonner";
+import { updateCardOrder } from "@/actions/update-card-order";
 
 interface ListContainerProps {
     boardId: number,
@@ -29,11 +33,26 @@ export const ListContainer = ({
     boardId,
     data,
 }: ListContainerProps) => {
-
-
-    // console.log("List Container rendered")
-    // console.log(data)
+    
     const [orderedData, setOrderedData] = useState(data);
+
+    const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
+        onSuccess: () => {
+            toast.success("list reordered");
+        },
+        onError: (error) => {
+            toast.error(JSON.stringify(error));
+        }
+    })
+
+    const { execute: executeUpdateCardOrder } = useAction(updateCardOrder, {
+        onSuccess: () => {
+            toast.success("card reordered");
+        },
+        onError: (error) => {
+            toast.error(JSON.stringify(error));
+        }
+    })    
 
     useEffect(() => {
         setOrderedData(data)
@@ -68,6 +87,10 @@ export const ListContainer = ({
 
             setOrderedData(items);
             // TODO: Trigger Server Action
+            executeUpdateListOrder({
+                items,
+                boardId
+            })
         }
 
         // User moves a card
@@ -123,6 +146,10 @@ export const ListContainer = ({
 
                 setOrderedData(newOrderedData);
                 // TODO: trigger server action
+                executeUpdateCardOrder({
+                    boardId,
+                    items: reorderedCards
+                })
             } 
             
             else { // User moves the card to another list
@@ -145,6 +172,10 @@ export const ListContainer = ({
                 
                 setOrderedData(newOrderedData);
                 // TODO: trigger server action
+                executeUpdateCardOrder({
+                    boardId,
+                    items: destList.cards
+                })
             }
 
         }

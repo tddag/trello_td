@@ -32,7 +32,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         }
     }
 
-    q = `SELECT \`order\` FROM list WHERE boardId = ? ORDER BY 'order' DESC`
+    q = `SELECT \`order\` FROM list WHERE boardId = ? ORDER BY \`order\` DESC`
     let [lists] = await connection.query(q, [boardId])
 
     console.log(lists)

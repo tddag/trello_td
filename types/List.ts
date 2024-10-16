@@ -1,12 +1,12 @@
 import Card from "./Card";
 
 type List = {
-    id: string,
+    id: string | number,
     title: string,
     order: number,
     boardId: number,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: Date,
+    updatedAt: Date,
     cards?: Card[]
 }
 
