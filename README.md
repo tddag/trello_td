@@ -1,4 +1,4 @@
-Technologies:
+Technologies/Libraries:
 
 - Next.js: Web Framework
 - React: UI Library
@@ -12,6 +12,7 @@ Technologies:
 - unsplash: stock photography
 - lodash: A JavaScript utility library delivering consistency, modularity, performance, & extras.
 - hello-pangea/dnd: drag and drop for lists with React
+- tanstack query: asynchronous state management
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
