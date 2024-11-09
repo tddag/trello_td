@@ -5,6 +5,7 @@ import { useCardModal } from "@/hooks/use-card-modal";
 import { fetcher } from "@/lib/fetcher";
 import Card from "@/types/Card";
 import { useQuery } from "@tanstack/react-query";
+import { Header } from "./header";
 
 export const CardModal = () => {
 
@@ -14,7 +15,7 @@ export const CardModal = () => {
         queryKey: ["card", id],
         queryFn: () => {
             if (id) return fetcher(`/api/cards/${id}`)
-            return Promise.resolve()
+            return Promise.resolve({})
         }
     })
 
@@ -24,7 +25,11 @@ export const CardModal = () => {
             onOpenChange={onClose}
         >
             <DialogContent>
-                {cardData?.title}
+                {!cardData 
+                    ? <Header.Skeleton/>
+                    : <Header data={cardData}/>
+                }
+                
             </DialogContent>
         </Dialog>
     )
