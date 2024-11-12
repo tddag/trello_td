@@ -126,7 +126,6 @@ export const Description = ({
 
 
             </div>
-            {data.description}
         </div>
     )
 }
