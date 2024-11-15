@@ -6,6 +6,8 @@ import db from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { CreateCard } from "./schema";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@/types/AuditLog";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -40,11 +42,22 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
         q = `INSERT INTO card (title, listId, \`order\`) VALUES (?, ?, ?)`
 
-        await connection.query(q, [title, listId, newCardOrderNumber])     
+        await connection.query(q, [title, listId, newCardOrderNumber])  
+        
+
         
         q = `SELECT * FROM card WHERE listId = ? ORDER BY \`order\` DESC`
 
         let [cards] = await connection.query(q, [listId])   
+
+        const card = cards[0];
+
+        await createAuditLog({
+            entityId: card.id,
+            entityTitle: card.title,
+            entityType: ENTITY_TYPE.CARD,
+            action: ACTION.CREATE,
+        })        
         
         revalidatePath(`/board/${boardId}`)
 
