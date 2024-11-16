@@ -6,6 +6,8 @@ import db from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { UpdateBoard } from "./schema";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@/types/AuditLog";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -29,6 +31,15 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     q = `SELECT * FROM board WHERE id = ?`
     let [boards] = await connection.query(q, [id])
+
+    const board = boards[0];
+
+    await createAuditLog({
+        entityId: board.id,
+        entityTitle: board.title,
+        entityType: ENTITY_TYPE.BOARD,
+        action: ACTION.UPDATE
+    })  
 
     // console.log(boards[0]);
 

@@ -9,6 +9,8 @@ import { DeleteCard } from "./schema";
 import { redirect } from "next/navigation";
 import List from "@/types/List";
 import Card from "@/types/Card";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@/types/AuditLog";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -42,6 +44,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
         q = `DELETE FROM card WHERE id = ?`;
         await connection.query(q, [id])
+
+        await createAuditLog({
+            entityId: card.id,
+            entityTitle: card.title,
+            entityType: ENTITY_TYPE.CARD,
+            action: ACTION.DELETE
+        })         
         
         revalidatePath(`/board/${boardId}`);
         return {

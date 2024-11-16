@@ -8,6 +8,8 @@ import { createSafeAction } from "@/lib/create-safe-action";
 import { DeleteList } from "./schema";
 import { redirect } from "next/navigation";
 import List from "@/types/List";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@/types/AuditLog";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -41,6 +43,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
         let q = `DELETE FROM list WHERE id = ? AND boardId = ?`
         await connection.query(q, [id, boardId])
+
+        await createAuditLog({
+            entityId: list.id,
+            entityTitle: list.title,
+            entityType: ENTITY_TYPE.LIST,
+            action: ACTION.DELETE
+        })            
 
     } catch (e) {
         return {

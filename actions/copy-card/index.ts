@@ -9,6 +9,8 @@ import { CopyCard } from "./schema";
 import { redirect } from "next/navigation";
 import List from "@/types/List";
 import Card from "@/types/Card";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@/types/AuditLog";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -49,17 +51,26 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         // console.log(lastCardInList)        
 
         q = `INSERT INTO card(title, description, \`order\`, listId) VALUES(?, ?, ?, ?)`
-        let [res] = await connection.query(q, [card.title, card.description, card.order, card.listId]);
-        console.log("Copy card res: ")
-        console.log(res);
+        let [res] = await connection.query(q, [card.title + ' - Copy', card.description, card.order, card.listId]);
+        // console.log("Copy card res: ")
+        // console.log(res);
 
-        q = `SELECT * FROM card WHERE listId = ? ORDER BY \`order\` desc`;
+        q = `SELECT * FROM card WHERE listId = ? ORDER BY \`id\` desc LIMIT 3`;
         [cards] = await connection.query(q, [card.listId])
 
         let newCard = cards[0];
 
+        // console.log("Cards after copy is: ", cards)
+
         // console.log("New copied card is: ")
         // console.log(newCard)
+
+        await createAuditLog({
+            entityId: newCard.id,
+            entityTitle: newCard.title,
+            entityType: ENTITY_TYPE.CARD,
+            action: ACTION.CREATE
+        })
 
         revalidatePath(`/board/${boardId}`);
         return {

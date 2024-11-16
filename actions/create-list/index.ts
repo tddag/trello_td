@@ -6,6 +6,8 @@ import db from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { CreateList } from "./schema";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@/types/AuditLog";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -50,6 +52,15 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     q = `SELECT * FROM list WHERE boardId = ?`;
     [lists] = await connection.query(q, [boardId])
+
+    const newList = lists[lists.length - 1]
+
+    await createAuditLog({
+        entityId: newList.id,
+        entityTitle: newList.title,
+        entityType: ENTITY_TYPE.LIST,
+        action: ACTION.CREATE
+    })  
 
     // console.log(boards[0]);
 

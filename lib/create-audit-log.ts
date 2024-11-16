@@ -4,7 +4,7 @@ import db from "@/lib/db";
 
 
 interface Props {
-    entityId: string;
+    entityId: string | number;
     entityType: ENTITY_TYPE,
     entityTitle: string,
     action: ACTION

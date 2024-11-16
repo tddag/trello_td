@@ -9,6 +9,8 @@ import { CopyList } from "./schema";
 import { redirect } from "next/navigation";
 import List from "@/types/List";
 import Card from "@/types/Card";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@/types/AuditLog";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -69,6 +71,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         const [lists] = await connection.query(q, [newOrderNumber, boardId])
         newList = lists[0];
 
+        await createAuditLog({
+            entityId: newList.id,
+            entityTitle: newList.title,
+            entityType: ENTITY_TYPE.LIST,
+            action: ACTION.CREATE
+        })        
+
     } catch (e) {
         return {
             error: "Failed to create a new list"
@@ -90,6 +99,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
             q = `SELECT * FROM card WHERE listId = ? ORDER BY id`
             const [foundCards] = await connection.query(q, [newList.id]) 
             let newCard = foundCards[0];
+
+            await createAuditLog({
+                entityId: newCard.id,
+                entityTitle: newCard.title,
+                entityType: ENTITY_TYPE.CARD,
+                action: ACTION.CREATE
+            })              
             newCopyCards.push(newCard)
             console.log("new card created")
             console.log(newCard)

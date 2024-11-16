@@ -7,6 +7,8 @@ import { revalidatePath } from "next/cache";
 import { CreateBoard } from "./schema";
 import { createSafeAction } from "@/lib/create-safe-action";
 import db from "@/lib/db";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@/types/AuditLog";
  
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -50,6 +52,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         const [res] = await connection.query(q)    
 
         board = res[res.length - 1];
+
+        await createAuditLog({
+            entityId: board.id,
+            entityTitle: board.title,
+            entityType: ENTITY_TYPE.BOARD,
+            action: ACTION.CREATE
+        })             
 
     } catch (e) {
         console.log(e);
