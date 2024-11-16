@@ -16,6 +16,7 @@ export type AuditLog = {
     action: ACTION,
     entityId: string,
     entityType: ENTITY_TYPE,
+    entityTitle: string,
     userId: string,
     userImage: string,
     userName: string,

@@ -13,6 +13,7 @@ Technologies/Libraries:
 - lodash: A JavaScript utility library delivering consistency, modularity, performance, & extras.
 - hello-pangea/dnd: drag and drop for lists with React
 - tanstack query: asynchronous state management
+- data-fns: data utility library
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
