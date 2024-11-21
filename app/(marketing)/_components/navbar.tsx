@@ -14,11 +14,11 @@ const Navbar = () => {
                         
                     </Button>
 
-                    <Button size="sm" asChild>
+                    {/* <Button size="sm" asChild>
                         <Link href="/sign-up">
                             Get TrelloTD for free
                         </Link>
-                    </Button>
+                    </Button> */}
 
                 </div>
             </div>
