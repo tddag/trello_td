@@ -127,61 +127,61 @@
 - Clerk Authentication:
   - <table>
         <tr>
-            <td><img src"./screenshots/home_page.png" alt="home_page"></td>
-            <td><img src"./screenshots/clerk_login.png" alt="clerk_login"></td>
+            <td><img src="./screenshots/home_page.png" alt="home_page"></td>
+            <td><img src="./screenshots/clerk_login.png" alt="clerk_login"></td>
         </tr>
     </table>
 - Create new Clerk Organization:
   - <table>
         <tr>
-            <td><img src"./screenshots/create_clerk_org_1.png" alt="create_clerk_org_1"></td>
-            <td><img src"./screenshots/create_clerk_org_2.png" alt="create_clerk_org_2"></td>
+            <td><img src="./screenshots/create_clerk_org_1.png" alt="create_clerk_org_1"></td>
+            <td><img src="./screenshots/create_clerk_org_2.png" alt="create_clerk_org_2"></td>
         </tr>
     </table>
 - Create new board:
   - <table>
         <tr>
-            <td><img src"./screenshots/create_board_1.png" alt="create_board_1"></td>
-            <td><img src"./screenshots/create_board_2.png" alt="create_board_2"></td>
-            <td><img src"./screenshots/create_board_3.png" alt="create_board_3"></td>
+            <td><img src="./screenshots/create_board_1.png" alt="create_board_1"></td>
+            <td><img src="./screenshots/create_board_2.png" alt="create_board_2"></td>
+            <td><img src="./screenshots/create_board_3.png" alt="create_board_3"></td>
         </tr>
     </table>
 - Create new list:
   - <table>
         <tr>
-            <td><img src"./screenshots/create_list_1.png" alt="create_list_1"></td>
-            <td><img src"./screenshots/create_list_2.png" alt="create_list_2"></td>
+            <td><img src="./screenshots/create_list_1.png" alt="create_list_1"></td>
+            <td><img src="./screenshots/create_list_2.png" alt="create_list_2"></td>
         </tr>
     </table>
 - Create new card:
   - <table>
         <tr>
-            <td><img src"./screenshots/add_card_1.png" alt="add_card_1"></td>
-            <td><img src"./screenshots/add_card_2.png" alt="add_card_2"></td>
+            <td><img src="./screenshots/add_card_1.png" alt="add_card_1"></td>
+            <td><img src="./screenshots/add_card_2.png" alt="add_card_2"></td>
         </tr>
     </table>
 - Drag and Drop List
   - <table>
         <tr>
-            <td><img src"./screenshots/drag_and_drop_list.png" alt="drag_and_drop_list"></td>
+            <td><img src="./screenshots/drag_and_drop_list.png" alt="drag_and_drop_list"></td>
         </tr>
     </table>
 - Drag and Drop Card
   - <table>
         <tr>
-            <td><img src"./screenshots/drag_and_drop_card.png" alt="drag_and_drop_card"></td>
+            <td><img src="./screenshots/drag_and_drop_card.png" alt="drag_and_drop_card"></td>
         </tr>
     </table>
 - Card Details, Copy Card, Delete Card, Update Title, Update Description
   - <table>
         <tr>
-            <td><img src"./screenshots/card_details.png" alt="card_details"></td>
+            <td><img src="./screenshots/card_details.png" alt="card_details"></td>
         </tr>
     </table>
 - List Actions, Add a Card, Copy List, Delete List
   - <table>
         <tr>
-            <td><img src"./screenshots/list_actions.png" alt="list_actions"></td>
+            <td><img src="./screenshots/list_actions.png" alt="list_actions"></td>
         </tr>
     </table>
 - Audit Logs
@@ -198,8 +198,8 @@
   - Delete List
   - <table>
         <tr>
-            <td><img src"./screenshots/audit_log_1.png" alt="audit_log_1"></td>
-            <td><img src"./screenshots/audit_log_2.png" alt="audit_log_2"></td>
+            <td><img src="./screenshots/audit_log_1.png" alt="audit_log_1"></td>
+            <td><img src="./screenshots/audit_log_2.png" alt="audit_log_2"></td>
         </tr>
     </table>
 
